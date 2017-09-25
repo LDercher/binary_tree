@@ -28,17 +28,19 @@ void BinaryTree::deleteTree(Node<int>* subTree)
 void BinaryTree::add(int value, Node<int>* subTree)
 {
 
-    if (value < subTree->getValue() )
+    if (value > subTree->getValue() )
     {
         if (subTree->getLeft()==nullptr)
         {
-            Node<int>* temp = subTree->getLeft();
+            Node<int>* temp = new Node<int>();//subTree->getLeft();
 
-            temp = new Node<int>();
+          //  temp = new Node<int>();
 
             temp->setValue(value);
 
-            subTree->setRight(temp);
+            printf("adding %i to the left of st\n\n",value);
+
+           subTree->setLeft(temp);
 
         }
         else
@@ -46,13 +48,16 @@ void BinaryTree::add(int value, Node<int>* subTree)
             add(value, subTree->getLeft());
         }
     }
-    else if (value > subTree->getValue() )
+    else if (value < subTree->getValue() )
     {
         if (subTree->getRight()==nullptr)
         {
-            Node<int>* temp = subTree->getRight();
+            Node<int>* temp = new Node<int>();//subTree->getRight();
 
-            temp = new Node<int>();
+            //temp = new Node<int>();
+
+            printf("adding %i to the right of st\n\n",value);
+
 
             temp->setValue(value);
 
@@ -72,6 +77,8 @@ void BinaryTree::addElem(int elem) {
         Node<int>* temp = new Node<int>();
 
         temp->setValue(elem);
+
+        printf("adding root val %i \n\n", elem);
 
         m_root = temp;
 
